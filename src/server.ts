@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as bodyParser from 'body-parser';
@@ -7,9 +9,11 @@ import * as bodyParser from 'body-parser';
 import './inversify/ioc/loader';
 import { Container } from 'inversify';
 import { RaidStore } from './api/raids/raid.store';
+import { DatastoreGoogleCloud } from './api/datastore.google-cloud';
 
 let container = new Container();
-container.bind<RaidStore>(RaidStore).toSelf()
+container.bind<RaidStore>(RaidStore).toSelf();
+container.bind<DatastoreGoogleCloud>(DatastoreGoogleCloud).toSelf();
 // start the server
 let server = new InversifyExpressServer(container);
 

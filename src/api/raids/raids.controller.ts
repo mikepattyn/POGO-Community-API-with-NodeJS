@@ -1,14 +1,13 @@
-import { controller, httpGet } from "inversify-express-utils"
+import { controller, httpPost } from "inversify-express-utils"
 import { RaidStore } from "./raid.store";
 import { inject } from "inversify";
-
 @controller("/raids")
 export class RaidsController {
     @inject(RaidStore)
     private raidStore!: RaidStore
 
-    @httpGet('/')
+    @httpPost('/')
     public sayHello() {
-        return this.raidStore.sayHello()
+        return this.raidStore.post()
     }
 }
