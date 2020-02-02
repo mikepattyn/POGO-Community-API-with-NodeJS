@@ -30,7 +30,6 @@ let container = new Container();
 
 // set up bindings
 container.bind<Logger>(Logger).to(Logger);
-container.bind<LoggerMiddleware>(LoggerMiddleware).to(LoggerMiddleware);
 
 container.bind<RaidStore>(RaidStore).to(RaidStore).inSingletonScope();
 container.bind<GymStore>(GymStore).to(GymStore).inSingletonScope();

@@ -6,11 +6,14 @@ import validator from "email-validator"
 
 import { AuthStore } from "./../../stores/auth.store";
 import { isNullOrUndefined } from "util";
+import { Logger } from "../../logger";
 var jwt = require('jsonwebtoken');
 
 @controller("/api/v1/auth")
 export class authController implements interfaces.Controller {
-    constructor(@inject(AuthStore) private authStore: AuthStore) { }
+    constructor(
+        @inject(AuthStore) private authStore: AuthStore,
+        @inject(Logger) private logger: Logger) { }
 
     @httpPost('/users')
     private async register(@request() req: express.Request, @response() res: express.Response) {
@@ -39,7 +42,8 @@ export class authController implements interfaces.Controller {
             };
 
             await this.authStore.post(body)
-                .then(() => {
+                .then(async () => {
+                    this.logger.log(`User registered with email: ${body.Email}`)
                     res.sendStatus(201)
                 })
                 .catch((error: any) => {
@@ -90,13 +94,8 @@ export class authController implements interfaces.Controller {
         }
 
         // return token
+        this.logger.log(`User logged in: ${req.body.Email}`)
         res.status(200).send(token)
         return
-    }
-
-
-    @httpPost('/users/profile/logout')
-    private async logout(@request() req: express.Request, @response() res: express.Response) {
-        res.send("To be implemented...")
     }
 }
