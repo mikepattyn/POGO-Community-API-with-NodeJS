@@ -8,7 +8,7 @@ export class gymController extends BaseHttpController implements interfaces.Cont
     constructor(@inject(GymStore) private gymStore: GymStore) { super() }
 
     @httpGet('/:id')
-    private async getById(@requestParam("id") id: number, @requestHeaders() headers: any, @response() res: express.Response) {
+    private async getById(@requestParam("id") id: number, @response() res: express.Response) {
         if (await this.httpContext.user.isAuthenticated()) {
             await this.gymStore.getById(id).then(result => {
                 res.status(200).json(result)
