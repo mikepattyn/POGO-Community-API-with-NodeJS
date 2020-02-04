@@ -19,6 +19,8 @@ import { PlayerStore } from './stores/player.store.js';
 import { LocationStore } from './stores/location.store.js';
 import { AuthStore } from './stores/auth.store.js';
 import { CustomAuthProvider } from './services/auth/custom.auth.provider.js';
+import { GoogleCloudServices } from './services/google-cloud.services.js';
+import { GoogleCloudClient } from './services/google-cloud-vision.client.js';
 
 // Give Views/Layouts direct access to session data.
 
@@ -36,6 +38,9 @@ container.bind<GymStore>(GymStore).to(GymStore).inSingletonScope();
 container.bind<PlayerStore>(PlayerStore).to(PlayerStore).inSingletonScope();
 container.bind<LocationStore>(LocationStore).to(LocationStore).inSingletonScope();
 container.bind<AuthStore>(AuthStore).to(AuthStore).inSingletonScope();
+
+container.bind<GoogleCloudServices>(GoogleCloudServices).to(GoogleCloudServices).inSingletonScope();
+container.bind<GoogleCloudClient>(GoogleCloudClient).to(GoogleCloudClient).inSingletonScope();
 
 // create server
 let server = new InversifyExpressServer(container, null, null, null, CustomAuthProvider);
