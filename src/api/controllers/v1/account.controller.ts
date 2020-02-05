@@ -4,7 +4,7 @@ import { inject } from "inversify";
 import passwordHash from 'password-hash';
 import validator from "email-validator"
 
-import { AuthStore } from "./../../stores/auth.store";
+import { AuthStore } from "../../stores/account.store";
 import { isNullOrUndefined } from "util";
 import { Logger } from "../../logger";
 var jwt = require('jsonwebtoken');

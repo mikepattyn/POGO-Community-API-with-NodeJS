@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import * as pkg from '../package.json';
 import "reflect-metadata"
 import "./controllers/status.controller";
-import "./controllers/v1/auth.controller";
+import "./controllers/v1/account.controller";
 import "./controllers/v1/gym.controller";
 import "./controllers/v1/raid.controller";
 import "./controllers/v1/player.controller";
@@ -17,7 +17,7 @@ import { RaidStore } from './stores/raid.store.js';
 import { GymStore } from './stores/gym.store.js';
 import { PlayerStore } from './stores/player.store.js';
 import { LocationStore } from './stores/location.store.js';
-import { AuthStore } from './stores/auth.store.js';
+import { AuthStore } from './stores/account.store.js';
 import { CustomAuthProvider } from './services/auth/custom.auth.provider.js';
 import { GoogleCloudServices } from './services/google-cloud.services.js';
 import { GoogleCloudClient } from './services/google-cloud-vision.client.js';
