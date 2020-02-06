@@ -10,6 +10,6 @@ export class scanController extends BaseHttpController implements interfaces.Con
 
     @httpPost("/")
     private async scanImage(@request() req: express.Request, @response() res: express.Response) {
-
+        res.status(200).send("Ah yeet ti gelukt")
     }
 }
