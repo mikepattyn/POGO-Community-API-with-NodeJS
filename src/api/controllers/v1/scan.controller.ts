@@ -1,7 +1,8 @@
 import * as express from "express";
 import { controller, BaseHttpController, interfaces, httpPost, requestParam, response, request } from "inversify-express-utils";
 import { inject } from "inversify";
-import { GoogleCloudClient } from "../../services/google-cloud-vision.client";
+import { GoogleCloudClient } from "../../services/google/google-cloud-vision.client";
+import { isNullOrUndefined } from "util";
 
 
 @controller('/api/v1/scans')
@@ -10,6 +11,20 @@ export class scanController extends BaseHttpController implements interfaces.Con
 
     @httpPost("/")
     private async scanImage(@request() req: express.Request, @response() res: express.Response) {
-        res.status(200).send("Ah yeet ti gelukt")
+        if (req.body.url) {
+            var results = await this.googleCloudClient.readImage(req.body.url)
+            if (!isNullOrUndefined(results)) {
+                res.status(201).json({ textResults: results })
+            } else {
+                res.status(400).json({ error: CustomErrors.UNDEFINED_OR_EMPTY_RESULTS })
+            }
+        } else {
+            res.status(400).json({ error: CustomErrors.UNDEFINED_OR_EMPTY_URL })
+        }
     }
+}
+
+export enum CustomErrors {
+    UNDEFINED_OR_EMPTY_URL,
+    UNDEFINED_OR_EMPTY_RESULTS
 }

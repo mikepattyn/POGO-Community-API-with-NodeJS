@@ -12,7 +12,6 @@ import "./controllers/v1/location.controller";
 import "./controllers/v1/scan.controller";
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { Logger } from './logger';
 import { RaidStore } from './stores/raid.store.js';
 import { GymStore } from './stores/gym.store.js';
@@ -20,8 +19,8 @@ import { PlayerStore } from './stores/player.store.js';
 import { LocationStore } from './stores/location.store.js';
 import { AuthStore } from './stores/account.store.js';
 import { CustomAuthProvider } from './services/auth/custom.auth.provider.js';
-import { GoogleCloudServices } from './services/google-cloud.services.js';
-import { GoogleCloudClient } from './services/google-cloud-vision.client.js';
+import { GoogleCloudServices } from './services/google/google-cloud.services.js';
+import { GoogleCloudClient } from './services/google/google-cloud-vision.client.js';
 
 // Give Views/Layouts direct access to session data.
 
