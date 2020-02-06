@@ -9,6 +9,7 @@ import "./controllers/v1/gym.controller";
 import "./controllers/v1/raid.controller";
 import "./controllers/v1/player.controller";
 import "./controllers/v1/location.controller";
+import "./controllers/v1/scan.controller";
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
