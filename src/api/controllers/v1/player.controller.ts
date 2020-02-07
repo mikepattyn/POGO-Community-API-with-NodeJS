@@ -2,6 +2,7 @@ import * as express from "express";
 import { interfaces, controller, httpPost, request, response, BaseHttpController } from "inversify-express-utils";
 import { inject } from "inversify";
 import { PlayerStore } from "../../stores/player.store";
+import { DataPlayer } from "../../models/dbmodels/classes/DataPlayer";
 
 @controller("/api/v1/players")
 export class playerController extends BaseHttpController implements interfaces.Controller {
