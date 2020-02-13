@@ -22,4 +22,7 @@ export class DataPlayer implements IDataPlayer {
     static Insert() {
         return "INSERT INTO Players (DiscordId, FirstName, Nickname, Level, Team, DateJoined) VALUES (?, ?, ?, ?, ?, ?)"
     }
+    static GetByDiscordId() {
+        return "SELECT * FROM Players WHERE DiscordId = ?"
+    }
 }
