@@ -38,4 +38,19 @@ export class GymStore {
             console.log(error)
         }
     }
+    async getAll() {
+        try {
+            return new Promise((resolve: any, reject: any) => {
+                poolPromise.query(DataGym.GetAllWithLocations(), null,
+                (error: any, results: any, fields: any) => {
+                    if (error) reject(error);
+                    if (results) {
+                        resolve(results)
+                    }
+                })
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

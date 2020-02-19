@@ -18,4 +18,12 @@ export class DataGym implements IDataGym {
     static GetById() {
         return "SELECT * FROM Gyms WHERE Id= ?"
     }
+
+    static GetAllWithLocations() {
+        return `
+            SELECT Gyms.Name, Locations.Latitude, Locations.Longtitude FROM Gyms 
+                INNER JOIN Locations ON Gyms.LocationId = Locations.Id
+            WHERE NOT Gyms.Name = '' 
+        `
+    }
 }
