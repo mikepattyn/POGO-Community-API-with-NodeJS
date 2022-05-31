@@ -1,3 +1,8 @@
 */bin/*
 */obj/*
 */node_modules/*
+lib/
+.env
+src/api/sqlDb.ts
+gsc.json
+.vscode/launch.json
